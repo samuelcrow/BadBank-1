@@ -1,5 +1,5 @@
 import React from "react";
-import auth from "../index.js";
+import {auth}from "../index.js";
 
 function Card(props){
   function classes(){
