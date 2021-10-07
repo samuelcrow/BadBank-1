@@ -25,6 +25,7 @@ function Card(props){
 
 
 function CreateAccount(){
+    const currentUser = UserContext;
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');
   const [activeUser, setActiveUser] = React.useState(currentUser.user);
