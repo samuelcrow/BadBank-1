@@ -81,7 +81,7 @@ function BalanceForm(props) {
 
     function handle() {
         console.log(email);
-        const url = `/account/all/${email}`;
+        const url = `/account/all/${email}/0`;
         (async () => {
             var res = await fetch(url);
             var data = await res.json();

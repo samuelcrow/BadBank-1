@@ -92,7 +92,7 @@ function DepositForm(props) {
                   props.setStatus(JSON.stringify(data.value));
                   props.setShow(false);
                   console.log("JSON:", data);
-                  props.setBalance(data.value.balance + amount)
+                  props.setBalance(data.value.balance + Number(amount))
                   currentUser.balance = data.value.balance;
                   console.log(currentUser.balance);
               } catch (err) {
