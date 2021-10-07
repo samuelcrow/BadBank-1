@@ -86,7 +86,7 @@ function BalanceForm(props) {
             var res = await fetch(url);
             var data = await res.json();
             console.log(data, data.balance);
-            await props.setCurrentBalance(data.balance);
+            props.setCurrentBalance(data.balance);
         })();
         props.setShow(false);
     }
