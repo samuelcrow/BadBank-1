@@ -90,7 +90,7 @@ function WithdrawForm(props) {
           var res = await fetch(url);
           var data = await res.json();
           console.log(data);
-          props.setBalance(data.value.balance)
+          props.setBalance(data.value.balance - amount)
           currentUser.balance = data.value.balance;
           console.log(currentUser.balance);
       })();
