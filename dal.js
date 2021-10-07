@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
-const url         = 'mongodb://localhost:27017';
-const databaseUrl = process.env.DATABASE_URL || url
+const uri         = 'mongodb://localhost:27017';
+const databaseUrl = process.env.DATABASE_URL || uri
 let db            = null;
 require("dotenv").config()
 

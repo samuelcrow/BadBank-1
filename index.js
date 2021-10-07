@@ -4,7 +4,6 @@ var cors    = require('cors');
 var dal     = require('./dal.js');
 const path = require("path")
 require("dotenv").config()
-const { getToken, authorizeUser } = require('./middleware.js');
 
 
 
