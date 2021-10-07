@@ -1,4 +1,3 @@
-import Card from "./context";
 import bankImg from './bank.png'
 
 function Home(){
