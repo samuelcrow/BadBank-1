@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import firebase from "firebase/app";
+import firebase from "firebase/compat/app";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBN8wvYzzVTYLbJVj3DSH3nSN2Uei3of4M",
@@ -15,7 +15,6 @@ const firebaseConfig = {
 // Initialize Firebase if not already initialized
 firebase.initializeApp(firebaseConfig);
 // Make the auth and firebase references
-export const auth = firebase.auth();
 
 ReactDOM.render(
   <React.StrictMode>

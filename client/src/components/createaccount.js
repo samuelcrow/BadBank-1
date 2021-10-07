@@ -1,5 +1,5 @@
 import React from "react";
-import {auth}from "../index.js";
+import "firebase/compat/auth";
 
 function Card(props){
   function classes(){
@@ -60,6 +60,7 @@ function CreateForm(props){
 
 
   function handle() {
+    const auth = firebase.auth();
     console.log(name, email, password);
     auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
