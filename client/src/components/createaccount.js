@@ -1,5 +1,7 @@
 import React from "react";
 import "firebase/compat/auth";
+import firebase from "firebase/compat/app";
+import {UserContext} from './context';
 
 function Card(props){
   function classes(){
@@ -52,7 +54,7 @@ function CreateForm(props){
   const [name, setName]         = React.useState('');
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
-  const currentUser = React.useContext(UserContext);
+  const currentUser = UserContext;
 
   
 
