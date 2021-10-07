@@ -1,4 +1,5 @@
 import React from "react";
+import auth from "../index.js";
 
 function Card(props){
   function classes(){
@@ -51,26 +52,40 @@ function CreateForm(props){
   const [name, setName]         = React.useState('');
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
-
+  const currentUser = React.useContext(UserContext);
 
   
 
 
 
 
-  function handle(){
-    // const bankNum = Math.floor(Math.random()*90000) + 10000;
-    // console.log(name,email,password, bankNum);
-    const url = `/account/create/${name}/${email}/${password}/`;
-    (async () => {
-        var res  = await fetch(url);
-        var data = await res.json();  
-      localStorage.setItem("user_data", JSON.stringify(data))  
-      window.location = '/'
-        console.log(data);        
-    })();
-    props.setShow(false);
-  }    
+  function handle() {
+    console.log(name, email, password);
+    auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            const url = `/account/create/${name}/${email}/${password}/${userCredential.user.uid}`;
+            (async () => {
+                var res = await fetch(url);
+                console.log(res);
+                var data = await res.json();
+                console.log(data);
+            })();
+            props.setShow(false);
+            props.setActiveUser(email);
+            currentUser.user = email;
+            currentUser.balance = 0;
+        })
+        .catch((error) => {
+            // Function if incorrectly signed in
+            var errorMessage = `Error Message: ${error.message}`;
+            console.log(errorMessage);
+            props.setStatus(errorMessage);
+            setTimeout(() => props.setStatus(""), 4000);
+            // Clear the user inputs
+            setEmail("");
+            setPassword("");
+        });
+}  
 
   return (<>
 
