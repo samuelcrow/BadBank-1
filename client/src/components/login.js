@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from "react";
 import Card from "./context";
 import "firebase/compat/auth";
