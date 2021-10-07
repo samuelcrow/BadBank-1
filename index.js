@@ -4,7 +4,6 @@ var cors    = require('cors');
 var dal     = require('./dal.js');
 const path = require("path")
 require("dotenv").config()
-const { getToken, authorizeUser } = require('./middleware.js');
 
 
 
@@ -39,22 +38,14 @@ app.get('/account/create/:name/:email/:password/:id', function(req, res) {
 
 // login user 
 app.get('/account/login/:email/:password', function (req, res) {
-   
+
     dal.find(req.params.email).
         then((user) => {
 
             // if user exists, check password
             if(user.length > 0){
                 if (user[0].password === req.params.password){
-                    res.send({
-                        _id: user[0]._id,
-                        name: user[0].name,
-                        email: user[0].email,
-                        password: user[0].password,
-                        token: getToken(user[0])
-                    }); 
-
-                   // console.log(getToken(user[0]))
+                    res.send(user[0]);
                 }
                 else{
                     res.send('Login failed: wrong password');
@@ -88,8 +79,8 @@ app.get('/account/findOne/:email', function (req, res) {
 });
 
 
-// update - deposit/withdraw amount
-app.get('/account/update/:email/:amount', function (req, res) {
+// update - deposit amount
+app.get('/account/deposit/:email/:amount', function (req, res) {
 
     var amount = Number(req.params.amount);
 
@@ -100,8 +91,20 @@ app.get('/account/update/:email/:amount', function (req, res) {
     });    
 });
 
+// update - withdraw amount
+app.get('/account/withdraw/:email/:amount', function (req, res) {
+
+    var amount = -Number(req.params.amount);
+
+    dal.update(req.params.email, amount).
+        then((response) => {
+            console.log(response);
+            res.send(response);
+    });    
+});
+
 // all accounts
-app.get('/account/all', authorizeUser, function (req, res) {
+app.get('/account/all', function (req, res) {
 
     dal.all().
         then((docs) => {
