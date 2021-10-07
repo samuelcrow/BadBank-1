@@ -5,7 +5,7 @@ var dal     = require('./dal.js');
 const e = require('express');
 const path = require("path")
 require("dotenv").config()
-const { getToken, authorizeUser } = require('./middleware.js');
+
 
 
 
@@ -16,32 +16,24 @@ const { getToken, authorizeUser } = require('./middleware.js');
 app.use(cors());
 
 // create user account
-app.get('/account/create/:name/:email/:password', function (req, res) {
-   
-    // check if account exists
+app.get('/account/create/:name/:email/:password/:id', function(req, res) {
+    // else create user
     dal.find(req.params.email).
-        then((users) => {
-
+        then((users)=>{
             // if user exists, return error message
+            console.log(users);
             if(users.length > 0){
                 console.log('User already in exists');
-                res.send('User already in exists');    
+                res.send('User already in exists');
             }
             else{
                 // else create user
-                dal.create(req.params.name,req.params.email,req.params.password).
+                dal.create(req.params.name,req.params.email,req.params.password,req.params.id).
                     then((user) => {
                         console.log(user);
-                        res.send({
-                            _id: user._id,
-                            name: user.name,
-                            email: user.email,
-                            password: user.password,
-                            token: getToken(user)
-                        });            
+                        res.send(user);            
                     });            
             }
-
         });
 });
 
