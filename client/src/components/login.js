@@ -77,6 +77,8 @@ function LoginForm(props) {
   let currentUser = React.useContext(UserContext);
   const auth = firebase.auth();
   function handle() {
+    setEmail('');
+    setPassword('');
       auth.signInWithEmailAndPassword(email, password)
           .then(() => {
               console.log(email, password);

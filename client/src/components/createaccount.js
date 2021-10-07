@@ -13,7 +13,6 @@ function Card(props){
   return (
       <div className={classes()} style={{maxWidth: "30rem"}}>
           <div className="card-header">{props.header}</div>
-          <div className="card-header text-right">{props.activeUser}</div>
           <div className="card-body">
               {props.title && (<h5 className="card-title">{props.title}</h5>)}
               {props.text && (<p className="card-text">{props.text}</p>)}
@@ -28,6 +27,7 @@ function Card(props){
 function CreateAccount(){
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');
+  const [activeUser, setActiveUser] = React.useState(currentUser.user);
 
   return (
     <Card
@@ -35,7 +35,10 @@ function CreateAccount(){
       header="Create Account"
       status={status}
       body={show ? 
-        <CreateForm setShow={setShow}/> : 
+        <CreateForm 
+        setShow={setShow}
+        setActiveUser={setActiveUser}
+        setStatus={setStatus}/> : 
         <CreateMsg setShow={setShow}/>}
     />
   )
@@ -55,6 +58,7 @@ function CreateForm(props){
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
   const currentUser = UserContext;
+  console.log(currentUser);
 
   
 
