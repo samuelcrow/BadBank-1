@@ -1,9 +1,4 @@
 function NavBar(){
-
-  const handleLogout = () => {
-    localStorage.removeItem("user_data");
-    window.location = '/';
-  }
   return(
 
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,10 +25,7 @@ function NavBar(){
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#/alldata/">AllData</a>
-          </li> 
-          <li className="nav-item">
-            <a className="nav-link" onClick={handleLogout} href="#">Log Out</a>
-          </li>           
+          </li>         
         </ul>
       </div>
     </nav>

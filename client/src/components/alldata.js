@@ -10,7 +10,7 @@ function AllData(){
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                setData(JSON.stringify(data));                
+                setData(JSON.stringify(data));               
             });
 
     }, []);
@@ -19,6 +19,6 @@ function AllData(){
         <h5>All Data in Store:</h5>
         {data}
     </>);
-    }
+}
 
-    export default AllData
+export default AllData
