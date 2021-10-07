@@ -6,7 +6,7 @@ import Card from "./context";
 
 
 function CreateAccount(){
-    const currentUser = UserContext;
+  let currentUser = React.useContext(UserContext);
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');
   const [activeUser, setActiveUser] = React.useState(currentUser.user);
@@ -40,7 +40,7 @@ function CreateForm(props){
   const [name, setName]         = React.useState('');
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
-  const currentUser = UserContext;
+  let currentUser = React.useContext(UserContext);
   console.log(currentUser);
 
   
@@ -74,6 +74,7 @@ function CreateForm(props){
             // Clear the user inputs
             setEmail("");
             setPassword("");
+            setName("");
         });
 }  
 
