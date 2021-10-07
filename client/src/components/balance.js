@@ -1,7 +1,5 @@
 import React from "react";
 import Card from "./context";
-import HandleWrong from "./context";
-import BalanceMsg from "./context";
 import { UserContext } from "./context";
 
 function BalanceMsg(props){

@@ -1,8 +1,6 @@
 import React from "react";
 import Card from "./context";
 import {UserContext} from "./context";
-import HandleMsg from "./context";
-import HandleWrong from "./context";
 
 function HandleMsg(props){
     return(
