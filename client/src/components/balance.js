@@ -74,6 +74,7 @@ function Balance() {
 
 function BalanceForm(props) {
     let currentUser = React.useContext(UserContext);
+    const amount = 0;
     const email = currentUser.user;
     if (props.activeUser !== "Not Logged In") {
         props.setLoggedIn(true);
@@ -81,12 +82,14 @@ function BalanceForm(props) {
 
     function handle() {
         console.log(email);
-        const url = `/account/all/${email}/0`;
+        const url = `/account/all/${email}/${amount}`;
         (async () => {
             var res = await fetch(url);
             var data = await res.json();
             console.log(data, data.balance);
             props.setCurrentBalance(data.balance);
+            currentUser.balance = data.value.balance;
+            console.log(currentUser.balance);
         })();
         props.setShow(false);
     }
