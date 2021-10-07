@@ -1,37 +1,24 @@
-import {useState, useEffect} from 'react'
-import Card from "./context";
-
-const user_data = JSON.parse(localStorage.getItem("user_data"));
+import React from "react";
 
 function AllData(){
+    const [data, setData] = React.useState('');    
 
-    const [data, setData] = useState('');    
-
-   useEffect(() => {
+    React.useEffect(() => {
         
         // fetch all accounts from API
-        fetch('/account/all', {
-            headers: {
-                "Content-type": 'application/json',
-                Authorization: `Bearer ${user_data.token}`
-            }
-        })
+        fetch('/account/all')
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                setData(data);                
+                setData(JSON.stringify(data));                
             });
 
     }, []);
 
-    return (
-    <Card
-        bgcolor="secondary"
-        header="DarkBank Users"
-        status={"status"}
-        body={data}
-          />
-    )
+    return (<>
+        <h5>All Data in Store:</h5>
+        {data}
+    </>);
     }
 
     export default AllData
