@@ -4,13 +4,12 @@ import bankImg from './bank.png'
 function Home(){
   return (
   
-    <Card
-      txtcolor="black"
-      header="DarkBank Main Lobby"
-      title="Welcome to the DarkBank"
-      text="Please create a Dark account and enjoy our services."
-      body={(<img src={bankImg} className="img-fluid" alt="Responsive image"/>)}
-    />
+    <div className={"card mb-3 bg-primary text-white"} style={{maxWidth: "40rem"}}>
+        <div className="card-header">{"Bad Bank"}</div>
+        <div className="card-body">
+        <img src={bankImg} alt={"Picture of a Bad Bank"}/>
+        </div>
+    </div>
 
    
   );  
