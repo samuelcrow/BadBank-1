@@ -4,6 +4,33 @@ import {UserContext} from "./context";
 import HandleMsg from "./context";
 import HandleWrong from "./context";
 
+function HandleMsg(props){
+    return(
+    <>
+        <h5>{props.message}</h5>
+        <br/>
+        <h5>{`Your new balance is ${props.balance}`}</h5>
+        <button type="submit"
+            className="btn btn-light"
+            onClick={() => {props.setShow(true);}}>{props.return}
+        </button>
+    </>)
+}
+
+function HandleWrong(props){
+    return(
+        <>
+            <h5>{props.message}</h5>
+            <button type="submit"
+                className="btn btn-light"
+                onClick={() => {
+                    props.setShow(true)
+                    props.setWrong(false)
+                    }}>{props.return}
+            </button>
+        </>)
+}
+
 function Deposit() {
   const [show, setShow] = React.useState(true);
   const [wrong, setWrong] = React.useState(false);

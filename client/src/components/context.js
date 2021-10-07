@@ -22,42 +22,4 @@ function Card(props){
   );
 }
 
-function HandleMsg(props){
-    return(
-    <>
-        <h5>{props.message}</h5>
-        <br/>
-        <h5>{`Your new balance is ${props.balance}`}</h5>
-        <button type="submit"
-            className="btn btn-light"
-            onClick={() => {props.setShow(true);}}>{props.return}
-        </button>
-    </>)
-}
-
-function BalanceMsg(props){
-    return(
-    <>
-        <h5>{props.message}</h5>
-        <button type="submit"
-            className="btn btn-light"
-            onClick={() => {props.setShow(true);}}>{props.return}
-        </button>
-    </>)
-}
-
-function HandleWrong(props){
-    return(
-        <>
-            <h5>{props.message}</h5>
-            <button type="submit"
-                className="btn btn-light"
-                onClick={() => {
-                    props.setShow(true)
-                    props.setWrong(false)
-                    }}>{props.return}
-            </button>
-        </>)
-}
-
-export default (Card, HandleMsg, BalanceMsg, HandleWrong);
+export default Card;

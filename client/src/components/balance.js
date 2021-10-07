@@ -4,6 +4,31 @@ import HandleWrong from "./context";
 import BalanceMsg from "./context";
 import { UserContext } from "./context";
 
+function BalanceMsg(props){
+    return(
+    <>
+        <h5>{props.message}</h5>
+        <button type="submit"
+            className="btn btn-light"
+            onClick={() => {props.setShow(true);}}>{props.return}
+        </button>
+    </>)
+}
+
+function HandleWrong(props){
+    return(
+        <>
+            <h5>{props.message}</h5>
+            <button type="submit"
+                className="btn btn-light"
+                onClick={() => {
+                    props.setShow(true)
+                    props.setWrong(false)
+                    }}>{props.return}
+            </button>
+        </>)
+}
+
 function Balance() {
     const [show, setShow] = React.useState(true);
     const [wrong, setWrong] = React.useState(false);
