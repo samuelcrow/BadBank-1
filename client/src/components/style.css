@@ -1,0 +1,7 @@
+.AlertBar {
+  max-width: 400px;
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  height: 30px;
+}
